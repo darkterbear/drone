@@ -1,11 +1,13 @@
 from bluedot import BlueDot
 import time
-bd = BlueDot()
+leftStick = BlueDot()
 
 while True:
     x, y = 0.0, 0.0
-    if bd.is_pressed:
-        x, y = bd.position.x, bd.position.y
+    if leftStick.is_pressed:
+        x, y = leftStick.position.x, leftStick.position.y
+    throttle = (y + 1.0) / 2.0
+    rudder = x ** 3
 
-    print(x, y)
+    print('throttle: ' + throttle + '\t rudder: ' + rudder)
     time.sleep(0.05)
