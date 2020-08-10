@@ -19,3 +19,7 @@ This section will update as we add more features to our drone.
 - Battery: Ovonic 14.8V 1300mAh 100C 4S LiPo
 - Battery Monitor: Readytosky LiPo Battery Voltage Tester & Low Voltage Buzzer
 - Props: Gemfan Hurricane 51466 (5.1x4.66x3)
+
+
+## System Schematic
+![System Schematic](/images/system_schematic.png)
