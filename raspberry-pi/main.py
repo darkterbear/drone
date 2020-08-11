@@ -5,10 +5,8 @@ from bluedot import BlueDot
 import threading
 import time
 
-leftStick = None
-rightStick = None
 board = MultiWii("/dev/ttyACM0")
-
+board.arm()
 print("Flight Controller connected!")
 
 leftStick = BlueDot(port=1)
@@ -41,5 +39,6 @@ while True:
         int(throttle * 1000 + 1000),
         1000, 1000, 1000, 1000]
 
+    print(rcCommandData)
     board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData)
     time.sleep(0.05)
