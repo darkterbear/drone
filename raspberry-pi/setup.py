@@ -7,5 +7,5 @@ setup(
     url="https://github.com/darkterbear/drone",
     author="Terrance Li & Neal Ma",
     license="MIT",
-    packages=['pymultiwii', 'bluedot'],
+    packages=['pymultiwii'],
 )
