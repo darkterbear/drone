@@ -13,6 +13,10 @@ board = MultiWii("/dev/ttyACM0")
 def connect_controller():
     leftStick = BlueDot(port=1)
     rightStick = BlueDot(port=2)
+
+    while not leftStick.is_connected or not rightStick.is_connected:
+        time.sleep(0.1)
+
     print("Controller connected!")
 
 
