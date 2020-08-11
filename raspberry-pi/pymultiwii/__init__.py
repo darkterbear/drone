@@ -107,7 +107,7 @@ class MultiWii:
 
     """Function for sending a command to the board"""
 
-    def sendCMD(self, data_length, code, data, data_format):
+    def sendCMD(self, data_length, code, data, data_format=''):
         checksum = 0
         total_data = ['$'.encode('utf-8'), 'M'.encode('utf-8'),
                       '<'.encode('utf-8'), data_length, code] + data
@@ -188,7 +188,7 @@ class MultiWii:
         start = time.time()
         while timer < 0.5:
             data = [1500, 1500, 2000, 1000]
-            self.sendCMD(8, MultiWii.SET_RAW_RC, data, '')
+            self.sendCMD(8, MultiWii.SET_RAW_RC, data)
             time.sleep(0.05)
             timer = timer + (time.time() - start)
             start = time.time()
@@ -198,7 +198,7 @@ class MultiWii:
         start = time.time()
         while timer < 0.5:
             data = [1500, 1500, 1000, 1000]
-            self.sendCMD(8, MultiWii.SET_RAW_RC, data, '')
+            self.sendCMD(8, MultiWii.SET_RAW_RC, data)
             time.sleep(0.05)
             timer = timer + (time.time() - start)
             start = time.time()
@@ -209,8 +209,8 @@ class MultiWii:
             nd.append(pd[i]+pd[i+1]*256)
         data = pd
         print("PID sending:", data)
-        self.sendCMD(30, MultiWii.SET_PID, data, '')
-        self.sendCMD(0, MultiWii.EEPROM_WRITE, [], '')
+        self.sendCMD(30, MultiWii.SET_PID, data)
+        self.sendCMD(0, MultiWii.EEPROM_WRITE, [])
 
     def setVTX(self, band, channel, power):
         band_channel = ((band-1) << 3) | (channel-1)
@@ -347,7 +347,7 @@ class MultiWii:
         while True:
             try:
                 start = time.clock()
-                self.sendCMD(0, cmd, [], '')
+                self.sendCMD(0, cmd, [])
                 while True:
                     header = self.ser.read().decode('utf-8')
                     if header == '$':
@@ -398,7 +398,7 @@ class MultiWii:
     def getData2cmd(self, cmd):
         try:
             start = time.time()
-            self.sendCMD(0, self.ATTITUDE, [], '')
+            self.sendCMD(0, self.ATTITUDE, [])
             while True:
                 header = self.ser.read().decode('utf-8')
                 if header == '$':
@@ -411,7 +411,7 @@ class MultiWii:
             self.ser.flushInput()
             self.ser.flushOutput()
 
-            self.sendCMD(0, self.RC, [], '')
+            self.sendCMD(0, self.RC, [])
             while True:
                 header = self.ser.read().decode('utf-8')
                 if header == '$':
