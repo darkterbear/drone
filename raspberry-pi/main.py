@@ -6,7 +6,6 @@ import threading
 import time
 
 board = MultiWii("/dev/ttyACM0")
-board.arm()
 print("Flight Controller connected!")
 
 leftStick = BlueDot(port=1)
@@ -40,5 +39,5 @@ while True:
         1000, 1000, 1000, 1000]
 
     print(rcCommandData)
-    board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData)
+    board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData, '8H')
     time.sleep(0.05)
