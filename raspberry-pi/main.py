@@ -17,6 +17,7 @@ while not leftStick.is_connected or not rightStick.is_connected:
 print("Android Controller connected!")
 
 while True:
+    # calculate roll, pitch, yaw and throttle from dpad positions
     x, y = 0.0, -1.0
     if leftStick and leftStick.is_pressed:
         x, y = leftStick.position.x, leftStick.position.y
@@ -38,7 +39,11 @@ while True:
         int(throttle * 1000 + 1000),
         1000, 1000, 1000, 1000]
 
+    # send rc command
     board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData, '8H')
+    time.sleep(0.025)
+
+    # print board attitude
     board.getData(MultiWii.ATTITUDE)
     print(board.attitude)
-    time.sleep(0.05)
+    time.sleep(0.025)
