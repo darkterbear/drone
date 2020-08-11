@@ -9,18 +9,15 @@ leftStick = None
 rightStick = None
 board = MultiWii("/dev/ttyACM0")
 
+print("Flight Controller connected!")
 
-def connect_controller():
-    leftStick = BlueDot(port=1)
-    rightStick = BlueDot(port=2)
+leftStick = BlueDot(port=1)
+rightStick = BlueDot(port=2)
 
-    while not leftStick.is_connected or not rightStick.is_connected:
-        time.sleep(0.1)
+while not leftStick.is_connected or not rightStick.is_connected:
+    time.sleep(0.1)
 
-    print("Controller connected!")
-
-
-threading.Thread(target=connect_controller).start()
+print("Android Controller connected!")
 
 while True:
     x, y = 0.0, -1.0
