@@ -8,7 +8,6 @@ This subdirectory involves the code run on the Raspberry Pi to communicate with 
 
 ## Installation
 - `pip3 install pyserial`
-- `pip3 install bluedot`
 - `pip3 install .`
 
 ## Usage
