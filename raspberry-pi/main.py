@@ -38,6 +38,7 @@ while True:
         int(throttle * 1000 + 1000),
         1000, 1000, 1000, 1000]
 
-    print(rcCommandData)
     board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData, '8H')
+    board.getData(MultiWii.ATTITUDE)
+    print(board.attitude)
     time.sleep(0.05)
