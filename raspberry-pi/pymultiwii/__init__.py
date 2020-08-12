@@ -338,6 +338,7 @@ class MultiWii:
             else:
                 return "No return error!"
         except Exception as error:
+            print("Error in getData")
             print(error)
             pass
 
@@ -390,6 +391,7 @@ class MultiWii:
                     self.motor['elapsed'] = "%0.3f" % (elapsed,)
                     self.motor['timestamp'] = "%0.2f" % (time.time(),)
             except Exception as error:
+                print("Error in getDataInf")
                 print(error)
                 pass
 
@@ -439,4 +441,5 @@ class MultiWii:
             else:
                 return "No return error!"
         except Exception as error:
+            print("Error in getData2cmd")
             print(error)
