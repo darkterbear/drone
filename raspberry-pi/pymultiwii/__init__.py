@@ -187,7 +187,7 @@ class MultiWii:
         timer = 0
         start = time.time()
         while timer < 0.5:
-            data = [1500, 1500, 2000, 1000]
+            data = [1000, 1500, 1500, 2000]
             self.sendCMD(8, MultiWii.SET_RAW_RC, data, '4H')
             time.sleep(0.05)
             timer = timer + (time.time() - start)
@@ -197,7 +197,7 @@ class MultiWii:
         timer = 0
         start = time.time()
         while timer < 0.5:
-            data = [1500, 1500, 1000, 1000]
+            data = [1000, 1500, 1500, 1000]
             self.sendCMD(8, MultiWii.SET_RAW_RC, data, '4H')
             time.sleep(0.05)
             timer = timer + (time.time() - start)
