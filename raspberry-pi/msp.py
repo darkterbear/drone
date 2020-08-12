@@ -176,44 +176,21 @@ class MultiWii:
             print("("+str(error)+")\n\n")
             pass
 
-    def prearm(self):
+    """Function to arm / disarm """
+
+    def arm(self):
         buf = []
         util.push8(buf, 0)
         util.push8(buf, 1)
         self.sendCMD(MultiWii.ARMING_DISABLE, buf)
         time.sleep(0.05)
 
-    """Function to arm / disarm """
-    """
-    Modification required on Multiwii firmware to Protocol.cpp in evaluateCommand:
-
-    case MSP_SET_RAW_RC:
-      s_struct_w((uint8_t*)&rcSerial,16);
-      rcSerialCount = 50; // 1s transition 
-      s_struct((uint8_t*)&att,6);
-      break;
-
-    """
-
-    # def arm(self):
-    #     timer = 0
-    #     start = time.time()
-    #     while timer < 0.5:
-    #         data = [1500, 1500, 1000, 1500, 2000, 1000, 1000, 1000]
-    #         self.sendCMD(MultiWii.SET_RAW_RC, data)
-    #         time.sleep(0.05)
-    #         timer = timer + (time.time() - start)
-    #         start = time.time()
-
-    # def disarm(self):
-    #     timer = 0
-    #     start = time.time()
-    #     while timer < 0.5:
-    #         data = [1500, 1500, 1000, 1500, 1000, 1000, 1000, 1000]
-    #         self.sendCMD(MultiWii.SET_RAW_RC, data)
-    #         time.sleep(0.05)
-    #         timer = timer + (time.time() - start)
-    #         start = time.time()
+    def disarm(self):
+        buf = []
+        util.push8(buf, 1)
+        util.push8(buf, 0)
+        self.sendCMD(MultiWii.ARMING_DISABLE, buf)
+        time.sleep(0.05)
 
     # def setPID(self, pd):
     #     nd = []
