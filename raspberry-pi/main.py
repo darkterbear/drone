@@ -35,9 +35,9 @@ while True:
     rcCommandData = [
         int(aileron * 500 + 1500),
         int(elevator * 500 + 1500),
-        int(rudder * 500 + 1500),
         int(throttle * 1000 + 1000),
-        1000, 1000, 1000, 1000]
+        int(rudder * 500 + 1500),
+        2000, 1000, 1000, 1000]
 
     # send rc command
     board.sendCMD(16, MultiWii.SET_RAW_RC, rcCommandData, '8H')
