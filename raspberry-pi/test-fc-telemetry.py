@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pymultiwii import MultiWii
+from msp import MultiWii
 from sys import stdout
 
 if __name__ == "__main__":

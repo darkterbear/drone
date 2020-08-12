@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
-from pymultiwii import MultiWii
+from msp import MultiWii
+from util import push16
 import time
 
 board = MultiWii("/dev/ttyACM0")
@@ -13,8 +14,16 @@ print('Armed')
 
 time.sleep(1.0)
 
-board.sendCMD(MultiWii.SET_MOTOR, [
-              2000, 2000, 2000, 2000, 1000, 1000, 1000, 1000])
+buf = []
+push16(buf, 2000)
+push16(buf, 2000)
+push16(buf, 2000)
+push16(buf, 2000)
+push16(buf, 1000)
+push16(buf, 1000)
+push16(buf, 1000)
+push16(buf, 1000)
+board.sendCMD(MultiWii.SET_MOTOR, buf)
 
 print('Motors HIGH')
 
