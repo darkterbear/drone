@@ -21,6 +21,7 @@ class MultiWii:
 
     """Multiwii Serial Protocol message ID"""
     """ notice: just attitude, rc channels and raw imu, set raw rc are implemented at the moment """
+    ARMING_DISABLE = 99
     IDENT = 100
     STATUS = 101
     RAW_IMU = 102
@@ -170,6 +171,10 @@ class MultiWii:
             print("\n\nError in sendCMDreceiveATT.")
             print("("+str(error)+")\n\n")
             pass
+
+    def prearm(self):
+        self.sendCMD(2, MultiWii.ARMING_DISABLE, [0], '1H')
+        time.sleep(0.05)
 
     """Function to arm / disarm """
     """
