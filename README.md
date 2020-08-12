@@ -23,3 +23,14 @@ This section will update as we add more features to our drone.
 
 ## System Schematic
 ![System Schematic](/images/system_schematic.png)
+
+## Betaflight FC Setup
+This section is **very important**, and must be completed before running main.py or test-fc-command.py. This involves going to Betaflight Configurator and configuring the flight controller for use.
+
+1. Download and install [Betaflight Configurator](https://github.com/betaflight/betaflight-configurator/releases) (on a system that is not your RPi, ideally).
+2. Plug in the FC to that system, start Betaflight Configurator, select the appropriate serial port and hit "Connect"
+3. In the left panel, go to "Configuration". 
+4. In the "Receiver" section, select "MSP RX input (control via MSP port)". Click "Save and Reboot" and wait momentarily.
+5. In the left panel, go to "Modes". 
+6. In the "ARM" mode, click "Add Range", if there is no range already. 
+7. In that range, select "AUX 1" as the channel, and 1400-1600 as the range. Click "Save".
