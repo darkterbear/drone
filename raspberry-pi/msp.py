@@ -188,6 +188,7 @@ class MultiWii:
         print('Arm protection off; arming is allowed')
 
     def arm(self):
+        print('Arming...')
         # keep disarmed for 1s
         for _ in range(20):
             buf = []
@@ -215,8 +216,10 @@ class MultiWii:
             util.push16(buf, 1000)
             self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
+        print('ARMED')
 
     def disarm(self):
+        print('Disarming')
         # keep armed for 1s
         for _ in range(20):
             buf = []
@@ -244,6 +247,7 @@ class MultiWii:
             util.push16(buf, 1000)
             self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
+        print('DISARMED')
 
     def disable_arm(self):
         print('Enabling arm protection...')
