@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from pymultiwii import MultiWii
+from msp import MultiWii
 from bluedot import BlueDot
 from util import push16
 import time
@@ -49,9 +49,9 @@ while True:
 
     # send rc command
     board.sendCMD(MultiWii.SET_RAW_RC, buf)
-    time.sleep(0.05)
+    time.sleep(0.025)
 
     # print board attitude
-    # board.getData(MultiWii.ATTITUDE)
-    # print(board.attitude)
-    # time.sleep(0.025)
+    board.getData(MultiWii.ATTITUDE)
+    print(board.attitude)
+    time.sleep(0.025)
