@@ -213,7 +213,7 @@ class MultiWii:
             util.push16(buf, 1000)
             util.push16(buf, 1000)
             util.push16(buf, 1000)
-            board.sendCMD(MultiWii.SET_RAW_RC, buf)
+            self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
     def disarm(self):
@@ -228,7 +228,7 @@ class MultiWii:
             util.push16(buf, 1000)
             util.push16(buf, 1000)
             util.push16(buf, 1000)
-            board.sendCMD(MultiWii.SET_RAW_RC, buf)
+            self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
         # continuous disarm signal for 1s
