@@ -191,28 +191,28 @@ class MultiWii:
         # keep disarmed for 1s
         for _ in range(20):
             buf = []
-            push16(buf, 1500)
-            push16(buf, 1500)
-            push16(buf, 1000)
-            push16(buf, 1500)
-            push16(buf, 1000)  # aux1 disarm position
-            push16(buf, 1000)
-            push16(buf, 1000)
-            push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)  # aux1 disarm position
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
             self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
         # continuous arm signal for 1s
         for _ in range(20):
             buf = []
-            push16(buf, 1500)
-            push16(buf, 1500)
-            push16(buf, 1000)
-            push16(buf, 1500)
-            push16(buf, 1500)  # aux1 arm position
-            push16(buf, 1000)
-            push16(buf, 1000)
-            push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)  # aux1 arm position
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
             board.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
@@ -220,28 +220,28 @@ class MultiWii:
         # keep armed for 1s
         for _ in range(20):
             buf = []
-            push16(buf, 1500)
-            push16(buf, 1500)
-            push16(buf, 1000)
-            push16(buf, 1500)
-            push16(buf, 1500)  # aux1 arm position
-            push16(buf, 1000)
-            push16(buf, 1000)
-            push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)  # aux1 arm position
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
             board.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
         # continuous disarm signal for 1s
         for _ in range(20):
             buf = []
-            push16(buf, 1500)
-            push16(buf, 1500)
-            push16(buf, 1000)
-            push16(buf, 1500)
-            push16(buf, 1000)  # aux1 disarm position
-            push16(buf, 1000)
-            push16(buf, 1000)
-            push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)
+            util.push16(buf, 1500)
+            util.push16(buf, 1000)  # aux1 disarm position
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
+            util.push16(buf, 1000)
             self.sendCMD(MultiWii.SET_RAW_RC, buf)
             time.sleep(0.05)
 
