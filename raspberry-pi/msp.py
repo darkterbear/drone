@@ -134,7 +134,7 @@ class MultiWii:
 
     case MSP_SET_RAW_RC:
       s_struct_w((uint8_t*)&rcSerial,16);
-      rcSerialCount = 50; // 1s transition 
+      rcSerialCount = 50; // 1s transition
       s_struct((uint8_t*)&att,6);
       break;
 
@@ -178,19 +178,81 @@ class MultiWii:
 
     """Function to arm / disarm """
 
-    def arm(self):
+    def enable_arm(self):
+        print('Enabling arming...')
         buf = []
         util.push8(buf, 0)
         util.push8(buf, 1)
         self.sendCMD(MultiWii.ARMING_DISABLE, buf)
-        time.sleep(0.05)
+        time.sleep(5.5)
+        print('Arm protection off; arming is allowed')
+
+    def arm(self):
+        # keep disarmed for 1s
+        for _ in range(20):
+            buf = []
+            push16(buf, 1500)
+            push16(buf, 1500)
+            push16(buf, 1000)
+            push16(buf, 1500)
+            push16(buf, 1000)  # aux1 disarm position
+            push16(buf, 1000)
+            push16(buf, 1000)
+            push16(buf, 1000)
+            self.sendCMD(MultiWii.SET_RAW_RC, buf)
+            time.sleep(0.05)
+
+        # continuous arm signal for 1s
+        for _ in range(20):
+            buf = []
+            push16(buf, 1500)
+            push16(buf, 1500)
+            push16(buf, 1000)
+            push16(buf, 1500)
+            push16(buf, 1500)  # aux1 arm position
+            push16(buf, 1000)
+            push16(buf, 1000)
+            push16(buf, 1000)
+            board.sendCMD(MultiWii.SET_RAW_RC, buf)
+            time.sleep(0.05)
 
     def disarm(self):
+        # keep armed for 1s
+        for _ in range(20):
+            buf = []
+            push16(buf, 1500)
+            push16(buf, 1500)
+            push16(buf, 1000)
+            push16(buf, 1500)
+            push16(buf, 1500)  # aux1 arm position
+            push16(buf, 1000)
+            push16(buf, 1000)
+            push16(buf, 1000)
+            board.sendCMD(MultiWii.SET_RAW_RC, buf)
+            time.sleep(0.05)
+
+        # continuous disarm signal for 1s
+        for _ in range(20):
+            buf = []
+            push16(buf, 1500)
+            push16(buf, 1500)
+            push16(buf, 1000)
+            push16(buf, 1500)
+            push16(buf, 1000)  # aux1 disarm position
+            push16(buf, 1000)
+            push16(buf, 1000)
+            push16(buf, 1000)
+            self.sendCMD(MultiWii.SET_RAW_RC, buf)
+            time.sleep(0.05)
+
+    def disable_arm(self):
+        print('Enabling arm protection...')
         buf = []
         util.push8(buf, 1)
         util.push8(buf, 0)
         self.sendCMD(MultiWii.ARMING_DISABLE, buf)
         time.sleep(0.05)
+        print('Arm protection on; arming is disallowed...')
 
     # def setPID(self, pd):
     #     nd = []
