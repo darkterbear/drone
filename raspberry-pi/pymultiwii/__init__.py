@@ -173,7 +173,7 @@ class MultiWii:
             pass
 
     def prearm(self):
-        self.sendCMD(2, MultiWii.ARMING_DISABLE, [0], '1H')
+        self.sendCMD(4, MultiWii.ARMING_DISABLE, [0, 1], '2H')
         time.sleep(0.05)
 
     """Function to arm / disarm """
