@@ -34,3 +34,11 @@ This script tests the Bluetooth connection between the RPi and the Android contr
 2. Connect your voltmeter to your FC's output to the ESC; use GND and any ESC output
 3. Run test-fc-command.py
 4. The voltmeter should read ~54mV before arming, and ~71mV after arming. At the end, it should around ~80-90mV for medium throttle (1500)
+
+## remote-control.py
+Only attempt to run this if the prior tests all pass. This script will allow an Android mobile client to control this drone via Bluetooth.
+
+1. Populate the serial port name in remote-control.py as done in steps 1-3 for test-fc-telemetry
+2. Run remote-control.py
+3. After at least 1 second, connect to this RPi in the Android client
+4. After at least 6 seconds, the drone should be controllable with the Android client
