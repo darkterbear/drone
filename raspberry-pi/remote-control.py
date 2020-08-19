@@ -22,6 +22,10 @@ board.arm()
 
 
 while True:
+    # if Android remote disconnects, immediately end the program
+    if not leftStick.is_connected or not rightStick.is_connected:
+        break
+
     # calculate roll, pitch, yaw and throttle from dpad positions
     x, y = 0.0, -1.0
     if leftStick and leftStick.is_pressed:
