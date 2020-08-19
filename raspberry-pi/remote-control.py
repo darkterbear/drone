@@ -31,13 +31,13 @@ while True:
     if leftStick and leftStick.is_pressed:
         x, y = leftStick.position.x, leftStick.position.y
     throttle = (y + 1.0) / 2.0
-    rudder = x ** 3
+    rudder = x
 
     x, y = 0.0, 0.0
     if rightStick and rightStick.is_pressed:
         x, y = rightStick.position.x, rightStick.position.y
     aileron = x
-    elevator = -y
+    elevator = y
 
     # roll, pitch, yaw, throttle, aux1, aux2, aux3, aux4
     # each from 1000 to 2000
